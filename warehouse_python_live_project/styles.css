@@ -1,0 +1,132 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f4f4f4;
+}
+
+h1 {
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+  background: #222;
+  color: white;
+}
+
+#controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 8px 0;
+  background: #ddd;
+}
+
+#main {
+  display: flex;
+  height: calc(100vh - 90px);
+}
+
+/* MAP + SIDE PANEL */
+#mapContainer {
+  flex: 3;
+  position: relative;
+  background: white;
+  border-right: 2px solid #ccc;
+}
+
+#sidePanel {
+  flex: 1;
+  padding: 10px;
+  background: #fafafa;
+  overflow-y: auto;
+  border-left: 1px solid #ccc;
+}
+
+#faultList,
+#historyList {
+  list-style: none;
+  padding-left: 0;
+  font-size: 12px;
+}
+
+/* STATIONS */
+.station {
+  position: absolute;
+  width: 130px;
+  height: 45px;
+  border: 2px solid black;
+  text-align: center;
+  line-height: 45px;
+  background: white;
+  font-size: 12px;
+  z-index: 1;
+}
+
+.inbound { background: #dcdcdc; }
+.notif { background: #cce5ff; }
+.decision { background: #fff0b3; }
+.outbound { background: #ead7f3; }
+
+/* POSITIONS */
+#INBOUND01 { bottom: 30px; left: 80px; }
+
+#NOTIPOINT01 { bottom: 120px; left: 80px; }
+#NOTIPOINT02 { bottom: 120px; left: 260px; }
+#NOTIPOINT03 { top: 120px; left: 260px; }
+#NOTIPOINT04 { top: 120px; left: 520px; }
+
+#DEPOINT01 { top: 120px; left: 720px; }
+#DEPOINT02 { top: 120px; left: 900px; }
+#DEPOINT03 { top: 120px; left: 1080px; }
+
+#OUTPOINT01 { top: 20px; left: 720px; }
+#OUTPOINT02 { top: 20px; left: 900px; }
+#OUTPOINT03 { top: 20px; left: 1080px; }
+
+/* =============================
+   PALLETS — Normal State
+   ============================= */
+.pallet {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  background: #1f8a1f;         /* cleaner green */
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: 0.4s linear;
+  z-index: 5;
+
+  /* NEW CLEAN OUTLINE FOR NORMAL PALLETS */
+  border: 2px solid #0f4f0f;   /* darker green outline */
+  box-shadow: 0 0 4px rgba(0,0,0,0.2); /* subtle shadow */
+}
+
+/* =============================
+   FAULT — PULSING ANIMATION
+   ============================= */
+@keyframes faultPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 4px 1px rgba(255,0,0,0.4);
+  }
+  50% {
+    transform: scale(1.12);
+    box-shadow: 0 0 10px 4px rgba(255,0,0,0.7);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 4px 1px rgba(255,0,0,0.4);
+  }
+}
+
+.pallet.fault {
+  background: #cc0000 !important;  /* stronger red */
+  color: white !important;
+  border: 3px solid yellow;        /* high visibility */
+  animation: faultPulse 1.2s infinite ease-in-out;
+}
