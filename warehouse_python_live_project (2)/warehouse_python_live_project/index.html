@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Warehouse Control Room</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<h1>Warehouse Control Room</h1>
+
+<div id="controls">
+    <button id="playPauseBtn">Play</button>
+
+    <label>Speed:
+        <select id="speedSelect">
+            <option value="1">1x</option>
+            <option value="5">5x</option>
+            <option value="10">10x</option>
+        </select>
+    </label>
+
+    <label>Mode:
+        <select id="modeSelect">
+            <option value="live">Live Log</option>
+            <option value="average">Average Timing</option>
+        </select>
+    </label>
+
+    <span id="timeLabel">Time: 00:00:00</span>
+</div>
+
+<div id="main">
+
+    <!-- LEFT VISUALISATION PANEL -->
+    <div id="mapContainer">
+
+        <!-- INBOUND -->
+        <div class="station inbound" id="INBOUND01">INBOUND01</div>
+
+        <!-- NOTIFICATIONS -->
+        <div class="station notif" id="NOTIPOINT01">NOTIPOINT01</div>
+        <div class="station notif" id="NOTIPOINT02">NOTIPOINT02</div>
+        <div class="station notif" id="NOTIPOINT03">NOTIPOINT03</div>
+        <div class="station notif" id="NOTIPOINT04">NOTIPOINT04</div>
+
+        <!-- DECISION POINTS -->
+        <div class="station decision" id="DEPOINT01">DEPOINT01</div>
+        <div class="station decision" id="DEPOINT02">DEPOINT02</div>
+        <div class="station decision" id="DEPOINT03">DEPOINT03</div>
+
+        <!-- OUTBOUND -->
+        <div class="station outbound" id="OUTPOINT01">OUTPOINT01</div>
+        <div class="station outbound" id="OUTPOINT02">OUTPOINT02</div>
+        <div class="station outbound" id="OUTPOINT03">OUTPOINT03</div>
+
+    </div>
+
+    <!-- RIGHT SIDE PANEL -->
+    <div id="sidePanel">
+        <h2>Faults</h2>
+        <ul id="faultList"></ul>
+
+        <h2>Pallet History</h2>
+
+        <div id="historySearchBar">
+            <input id="historySearch" type="text" placeholder="Enter pallet ID">
+            <button id="historySearchBtn">Search</button>
+        </div>
+
+        <ul id="historyList"></ul>
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

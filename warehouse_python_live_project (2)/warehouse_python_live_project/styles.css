@@ -1,0 +1,217 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #0f1117;
+  color: #e5e7eb;
+}
+
+h1 {
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+  background: #1a1c23;
+  color: #e5e7eb;
+}
+
+#controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 8px 0;
+  background: #1f242d;
+  border-bottom: 1px solid #2a303c;
+}
+
+#main {
+  display: flex;
+  height: calc(100vh - 90px);
+}
+
+#mapContainer {
+  flex: 3;
+  position: relative;
+  background: #0f131a;
+  border-right: 2px solid #2a303c;
+  overflow: hidden;
+}
+
+#sidePanel {
+  flex: 1;
+  padding: 10px;
+  background: #11161d;
+  overflow-y: auto;
+  border-left: 1px solid #2a303c;
+  color: #d1d5db;
+}
+
+#faultList,
+#historyList {
+  list-style: none;
+  padding-left: 0;
+  font-size: 12px;
+  color: #d1d5db;
+}
+
+/* =====================
+   STATION BLOCKS
+   ===================== */
+.station {
+  position: absolute;
+  width: 130px;
+  height: 45px;
+  border: 2px solid #4b5563;
+  text-align: center;
+  line-height: 45px;
+  background: #1e2530;
+  font-size: 12px;
+  z-index: 1;
+  color: #e5e7eb;
+}
+
+/* station types */
+.inbound {
+  background: #064e3b;
+  border-color: #22c55e;
+}
+
+.notif {
+  background: #0c4a6e;
+  border-color: #38bdf8;
+}
+
+.decision {
+  background: #7c2d12;
+  border-color: #f97316;
+}
+
+.outbound {
+  background: #4c1d95;
+  border-color: #a855f7;
+}
+
+/* =====================
+   SPACED COORDINATES
+   Kept inside the map (left of the right panel)
+   OUTPOINTS directly above DEPOINTS
+   ===================== */
+#INBOUND01 {
+  bottom: 70px;
+  left: 70px;
+}
+
+#NOTIPOINT01 {
+  bottom: 210px;
+  left: 70px;
+}
+
+#NOTIPOINT02 {
+  bottom: 210px;
+  left: 250px;
+}
+
+#NOTIPOINT03 {
+  top: 190px;
+  left: 250px;
+}
+
+#NOTIPOINT04 {
+  top: 190px;
+  left: 430px;
+}
+
+#DEPOINT01 {
+  top: 190px;
+  left: 610px;
+}
+
+#DEPOINT02 {
+  top: 190px;
+  left: 790px;
+}
+
+#DEPOINT03 {
+  top: 190px;
+  left: 970px;
+}
+
+#OUTPOINT01 {
+  top: 55px;
+  left: 610px;
+}
+
+#OUTPOINT02 {
+  top: 55px;
+  left: 790px;
+}
+
+#OUTPOINT03 {
+  top: 55px;
+  left: 970px;
+}
+
+/* =====================
+   PALLETS
+   ===================== */
+.pallet {
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  background: #1f8a1f;
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: 0.4s linear;
+  z-index: 5;
+  border: 2px solid #0f4f0f;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+/* pallet fault animation */
+@keyframes faultPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 6px rgba(255, 0, 0, 0.4);
+  }
+  50% {
+    transform: scale(1.12);
+    box-shadow: 0 0 14px rgba(255, 0, 0, 0.85);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 6px rgba(255, 0, 0, 0.4);
+  }
+}
+
+.pallet.fault {
+  background: #cc0000;
+  color: white;
+  border: 3px solid yellow;
+  animation: faultPulse 1s infinite;
+}
+
+/* =====================
+   STATION FAULT FLASH
+   ===================== */
+@keyframes stationFlash {
+  0% {
+    background: #640000;
+    border-color: red;
+  }
+  50% {
+    background: #b80000;
+    border-color: yellow;
+  }
+  100% {
+    background: #640000;
+    border-color: red;
+  }
+}
+
+.station-fault {
+  animation: stationFlash 0.6s infinite;
+}
